@@ -22,6 +22,7 @@ import PreLanderGenerator from './PreLanderGenerator';
 import ApiScriptGenerator from './ApiScriptGenerator';
 import FolderMonitorGenerator from './FolderMonitorGenerator';
 import TelegramBotGenerator from './TelegramBotGenerator';
+import TelegramApprovalGateway from './TelegramApprovalGateway';
 import GoogleDriveIntegration from './GoogleDriveIntegration';
 import GoogleSheetsIntegration from './GoogleSheetsIntegration';
 
@@ -30,6 +31,7 @@ type TabType =
   | 'queue' 
   | 'content_engine' 
   | 'adapter' 
+  | 'approval'
   | 'drive' 
   | 'sheets' 
   | 'ffmpeg' 
@@ -104,6 +106,17 @@ export default function Layout() {
                 >
                   <Share2 className="w-4 h-4" />
                   4. Platform Adapter (Make)
+                </button>
+                <button
+                  onClick={() => setActiveTab('approval')}
+                  className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold transition-colors ${
+                    activeTab === 'approval'
+                      ? 'bg-indigo-600 text-white shadow-sm'
+                      : 'text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  5. Akceptacja Telegram
                 </button>
               </div>
             </div>
@@ -213,6 +226,7 @@ export default function Layout() {
           {activeTab === 'queue' && <ContentQueueManager />}
           {activeTab === 'content_engine' && <ContentEngine />}
           {activeTab === 'adapter' && <PlatformAdapter />}
+          {activeTab === 'approval' && <TelegramApprovalGateway />}
           {activeTab === 'drive' && <GoogleDriveIntegration />}
           {activeTab === 'sheets' && <GoogleSheetsIntegration />}
           {activeTab === 'ffmpeg' && <FFmpegGenerator />}
