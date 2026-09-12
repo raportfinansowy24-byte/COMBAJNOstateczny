@@ -1,6 +1,6 @@
 {
   "name": "Video Processing & Monetization Studio",
-  "description": "Narzędzie do automatyzacji wideo, generowania komend FFmpeg, skryptów API i pre-landerów CPA.",
+  "description": "Kombajn V2: Silnik automatyzacji contentu, integracji ofert MyLead, kolejkowania materiałów i dystrybucji na TikTok, Reels oraz Shorts.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
