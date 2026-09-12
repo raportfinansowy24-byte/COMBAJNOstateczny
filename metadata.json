@@ -1,0 +1,8 @@
+{
+  "name": "Video Processing & Monetization Studio",
+  "description": "Narzędzie do automatyzacji wideo, generowania komend FFmpeg, skryptów API i pre-landerów CPA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
