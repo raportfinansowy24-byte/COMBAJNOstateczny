@@ -11,7 +11,8 @@ import {
   FolderSync, 
   MessageCircle, 
   HardDrive, 
-  TableProperties 
+  TableProperties,
+  DollarSign
 } from 'lucide-react';
 import MyLeadEngine from './MyLeadEngine';
 import ContentQueueManager from './ContentQueueManager';
@@ -25,9 +26,11 @@ import TelegramBotGenerator from './TelegramBotGenerator';
 import TelegramApprovalGateway from './TelegramApprovalGateway';
 import GoogleDriveIntegration from './GoogleDriveIntegration';
 import GoogleSheetsIntegration from './GoogleSheetsIntegration';
+import MyLeadRealIntegration from './MyLeadRealIntegration';
 
 type TabType = 
   | 'mylead' 
+  | 'mylead_real'
   | 'queue' 
   | 'content_engine' 
   | 'adapter' 
@@ -64,6 +67,17 @@ export default function Layout() {
               </div>
               <div className="space-y-1">
                 <button
+                  onClick={() => setActiveTab('mylead_real')}
+                  className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold transition-colors ${
+                    activeTab === 'mylead_real'
+                      ? 'bg-amber-600 text-white shadow-sm'
+                      : 'text-amber-800 bg-amber-50/60 hover:bg-amber-100/60'
+                  }`}
+                >
+                  <DollarSign className="w-4 h-4 text-amber-600" />
+                  🔑 Twoje Konto MyLead
+                </button>
+                <button
                   onClick={() => setActiveTab('mylead')}
                   className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold transition-colors ${
                     activeTab === 'mylead'
@@ -83,7 +97,7 @@ export default function Layout() {
                   }`}
                 >
                   <Layers className="w-4 h-4" />
-                  2. Kolejka & /TUWRZUCAM
+                  2. Auto-Poller (Dysk)
                 </button>
                 <button
                   onClick={() => setActiveTab('content_engine')}
@@ -94,7 +108,7 @@ export default function Layout() {
                   }`}
                 >
                   <Sparkles className="w-4 h-4" />
-                  3. Content Engine (Viral)
+                  3. Auto-Content Engine (W Tle)
                 </button>
                 <button
                   onClick={() => setActiveTab('adapter')}
@@ -222,6 +236,7 @@ export default function Layout() {
       {/* Main Content */}
       <main className="flex-1 p-6 md:p-8 lg:p-10 overflow-y-auto">
         <div className="max-w-4xl mx-auto">
+          {activeTab === 'mylead_real' && <MyLeadRealIntegration />}
           {activeTab === 'mylead' && <MyLeadEngine />}
           {activeTab === 'queue' && <ContentQueueManager />}
           {activeTab === 'content_engine' && <ContentEngine />}
